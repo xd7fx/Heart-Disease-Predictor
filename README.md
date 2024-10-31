@@ -28,6 +28,9 @@ For this project, we experimented with various machine learning models to find t
 | K-Nearest Neighbors      | 80%           |
 | Decision Tree Classifier | 75%           |
 |--------------------------|---------------|
+
+
+
 | Hyperparameter Tuning    | Accuracy Score|
 |--------------------------|---------------|
 | Random Forest Classifier | 86%           |
