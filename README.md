@@ -15,7 +15,9 @@ This project is a machine learning-powered application designed to predict the l
 ## 🌟 Features
 
 -📊 Interactive interface for inputting health metrics such as age, cholesterol level, and more.
+
 -⚡ Real-time predictions of heart disease likelihood based on user inputs.
+
 -🧑‍💻 User-friendly design built using Streamlit, making it easy for anyone to use.
 
 ## 📈 Model Comparison and Accuracy
