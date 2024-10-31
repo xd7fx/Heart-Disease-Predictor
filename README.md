@@ -4,7 +4,9 @@ This project is a machine learning-powered application designed to predict the l
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-streamlit-app-link-here)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://heart-disease-predictor1.streamlit.app)
+
+![image](https://github.com/user-attachments/assets/4e5e2d9c-938d-4472-8549-a5e72f6f49d4)
 
 ## GitHub Codespaces
 
@@ -24,10 +26,9 @@ For this project, we experimented with various machine learning models to find t
 |--------------------------|---------------|
 | Logistic Regression      | 82%           |
 | Random Forest Classifier | 83%           |
-| Support Vector Machine   | 83%           |
+| Support Vector Machine   | 82%           |
 | K-Nearest Neighbors      | 80%           |
 | Decision Tree Classifier | 75%           |
-|--------------------------|---------------|
 
 
 
