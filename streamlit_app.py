@@ -34,7 +34,9 @@ texts = {
         "predict": "Predict",
         "result_yes": "The model predicts the presence of heart disease.",
         "result_no": "The model predicts no presence of heart disease.",
-        "change_language": "Change Language"
+        "change_language": "Change Language",
+        "yes": "Yes",
+        "no": "No"
     },
     "ar": {
         "title": "نظام التنبؤ بأمراض القلب",
@@ -56,7 +58,9 @@ texts = {
         "predict": "تنبؤ",
         "result_yes": "النموذج يتوقع وجود أمراض القلب.",
         "result_no": "النموذج يتوقع عدم وجود أمراض القلب.",
-        "change_language": "تغيير اللغة"
+        "change_language": "تغيير اللغة",
+        "yes": "نعم",
+        "no": "لا"
     }
 }
 
