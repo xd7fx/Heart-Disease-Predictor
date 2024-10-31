@@ -142,4 +142,8 @@ if len(input_data[0]) == model.n_features_in_:
     if st.button(texts[st.session_state.lang]["predict"]):
         prediction = model.predict(input_data)
         if prediction[0] == 1:
-            st.success(texts[st.session_state.lang
+            st.success(texts[st.session_state.lang]["result_yes"])
+        else:
+            st.success(texts[st.session_state.lang]["result_no"])
+else:
+    st.error("The input data does not match the model's expected feature count. Please check the input fields.")
