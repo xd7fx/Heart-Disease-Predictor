@@ -8,20 +8,25 @@ model = pickle.load(open('heart_disease_model.sav', 'rb'))
 # Streamlit app
 st.title('Heart Disease Prediction System')
 
-# Collect user input for model features
-age = st.number_input('Age', min_value=1, max_value=120)
-sex = st.selectbox('Sex', ['Female', 'Male'])
-cp = st.selectbox('Chest Pain Type', ['Typical Angina', 'Atypical Angina', 'Non-Anginal Pain', 'Asymptomatic'])
-trestbps = st.number_input('Resting Blood Pressure', min_value=80, max_value=200)
-chol = st.number_input('Cholesterol Level', min_value=100, max_value=400)
-fbs = st.selectbox('Fasting Blood Sugar > 120 mg/dl', ['No', 'Yes'])
-restecg = st.selectbox('Resting Electrocardiographic Results', ['Normal', 'Having ST-T Wave Abnormality', 'Showing Probable or Definite Left Ventricular Hypertrophy'])
-thalach = st.number_input('Maximum Heart Rate Achieved', min_value=60, max_value=220)
-exang = st.selectbox('Exercise Induced Angina', ['No', 'Yes'])
-oldpeak = st.number_input('ST Depression Induced by Exercise')
-slope = st.selectbox('Slope of the Peak Exercise ST Segment', ['Upsloping', 'Flat', 'Downsloping'])
-ca = st.selectbox('Number of Major Vessels', [0, 1, 2, 3, 4])
-thal = st.selectbox('Thalassemia', ['Normal', 'Fixed Defect', 'Reversible Defect'])
+# Create columns for layout
+col1, col2 = st.columns(2)
+
+with col1:
+    age = st.number_input('Age', min_value=1, max_value=120)
+    sex = st.selectbox('Sex', ['Female', 'Male'])
+    cp = st.selectbox('Chest Pain Type', ['Typical Angina', 'Atypical Angina', 'Non-Anginal Pain', 'Asymptomatic'])
+    trestbps = st.number_input('Resting Blood Pressure', min_value=80, max_value=200)
+    fbs = st.selectbox('Fasting Blood Sugar > 120 mg/dl', ['No', 'Yes'])
+    thalach = st.number_input('Maximum Heart Rate Achieved', min_value=60, max_value=220)
+
+with col2:
+    chol = st.number_input('Cholesterol Level', min_value=100, max_value=400)
+    restecg = st.selectbox('Resting Electrocardiographic Results', ['Normal', 'Having ST-T Wave Abnormality', 'Showing Probable or Definite Left Ventricular Hypertrophy'])
+    exang = st.selectbox('Exercise Induced Angina', ['No', 'Yes'])
+    oldpeak = st.number_input('ST Depression Induced by Exercise')
+    slope = st.selectbox('Slope of the Peak Exercise ST Segment', ['Upsloping', 'Flat', 'Downsloping'])
+    ca = st.selectbox('Number of Major Vessels', [0, 1, 2, 3, 4])
+    thal = st.selectbox('Thalassemia', ['Normal', 'Fixed Defect', 'Reversible Defect'])
 
 # Map text inputs to numerical values for the model
 sex = 1 if sex == 'Male' else 0
