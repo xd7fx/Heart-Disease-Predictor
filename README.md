@@ -6,7 +6,7 @@ This project is a machine learning-powered application designed to predict the l
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://heart-disease-predictor1.streamlit.app)
 
-![image](https://github.com/user-attachments/assets/4e5e2d9c-938d-4472-8549-a5e72f6f49d4)
+![image](https://github.com/user-attachments/assets/d2225997-82ca-4165-a3b4-a6a2427dbae3)
 
 ## 💻 GitHub Codespaces
 
