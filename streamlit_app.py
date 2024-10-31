@@ -126,17 +126,17 @@ with col2:
 # Map text inputs to numerical values for the model
 sex = 1 if sex == texts[st.session_state.lang]["male"] else 0
 cp = texts["en"]["cp_options"].index(option_mapping["cp_options"].get(cp, cp))  # Map Arabic to English if needed
-fbs = 1 if fbs == texts[st.session_state.lang]["yes"] else 0
-restecg = texts["en"]["restecg_options"].index(option_mapping["restecg_options"].get(restecg, restecg))
 exang = 1 if exang == texts[st.session_state.lang]["yes"] else 0
 slope = texts["en"]["slope_options"].index(option_mapping["slope_options"].get(slope, slope))
 thal = texts["en"]["thal_options"].index(option_mapping["thal_options"].get(thal, thal))
 
-# Prepare input data for prediction
-input_data = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
+# Prepare input data for prediction (excluding 'fbs', 'chol', 'restecg', and 'age')
+input_data = [sex, cp, trestbps, thalach, exang, oldpeak, slope, ca, thal]
 input_data = np.asarray(input_data).reshape(1, -1)
 
 # Check the input shape before prediction to avoid ValueError
+st.write(f"Expected features: {model.n_features_in_}, Input features: {len(input_data[0])}")
+
 if len(input_data[0]) == model.n_features_in_:
     # Predict and display result
     if st.button(texts[st.session_state.lang]["predict"]):
