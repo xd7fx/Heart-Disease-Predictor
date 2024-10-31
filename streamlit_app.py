@@ -136,10 +136,10 @@ thal = texts["en"]["thal_options"].index(option_mapping["thal_options"].get(thal
 input_data = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
 input_data = np.asarray(input_data).reshape(1, -1)
 
-# Predict and display result
-if st.button(texts[st.session_state.lang]["predict"]):
-    prediction = model.predict(input_data)
-    if prediction[0] == 1:
-        st.success(texts[st.session_state.lang]["result_yes"])
-    else:
-        st.success(texts[st.session_state.lang]["result_no"])
+# Check the input shape before prediction to avoid ValueError
+if len(input_data[0]) == model.n_features_in_:
+    # Predict and display result
+    if st.button(texts[st.session_state.lang]["predict"]):
+        prediction = model.predict(input_data)
+        if prediction[0] == 1:
+            st.success(texts[st.session_state.lang
