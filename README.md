@@ -41,8 +41,11 @@ Based on this comparison, the **Random Forest Classifier** achieved the highest 
 ## 📚 Further Reading
 
 For more information on heart disease prediction using machine learning, consider exploring these resources:
+
 -📄 [Heart Disease Data Analysis and Prediction](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset)
+
 -📘 [Streamlit Documentation](https://docs.streamlit.io/)
+
 -🧠 [Machine Learning Models for Classification Tasks](https://scikit-learn.org/stable/supervised_learning.html)
 
 ---
