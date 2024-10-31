@@ -12,7 +12,7 @@ if "lang" not in st.session_state:
 def toggle_language():
     st.session_state.lang = "ar" if st.session_state.lang == "en" else "en"
 
-# Language texts with emojis
+# Language texts with emojis and options in Arabic
 texts = {
     "en": {
         "title": "💖 Heart Disease Prediction System",
@@ -36,7 +36,11 @@ texts = {
         "result_no": "✅ The model predicts no presence of heart disease.",
         "change_language": "Change Language 🌐",
         "yes": "Yes ✅",
-        "no": "No ❌"
+        "no": "No ❌",
+        "cp_options": ["Typical Angina", "Atypical Angina", "Non-Anginal Pain", "Asymptomatic"],
+        "restecg_options": ["Normal", "Having ST-T Wave Abnormality", "Showing Probable or Definite Left Ventricular Hypertrophy"],
+        "slope_options": ["Upsloping", "Flat", "Downsloping"],
+        "thal_options": ["Normal", "Fixed Defect", "Reversible Defect"]
     },
     "ar": {
         "title": "💖 نظام التنبؤ بأمراض القلب",
@@ -60,7 +64,11 @@ texts = {
         "result_no": "✅ النموذج يتوقع عدم وجود أمراض القلب.",
         "change_language": "تغيير اللغة 🌐",
         "yes": "نعم ✅",
-        "no": "لا ❌"
+        "no": "لا ❌",
+        "cp_options": ["ذبحة صدرية نموذجية", "ذبحة صدرية غير نموذجية", "ألم غير قلبي", "بدون أعراض"],
+        "restecg_options": ["طبيعي", "وجود اضطراب موجة ST-T", "إظهار تضخم بطين أيسر محتمل أو مؤكد"],
+        "slope_options": ["تصاعدي", "مسطح", "تنازلي"],
+        "thal_options": ["طبيعي", "عيب ثابت", "عيب قابل للتراجع"]
     }
 }
 
@@ -76,28 +84,28 @@ col1, col2 = st.columns(2)
 with col1:
     age = st.number_input(texts[st.session_state.lang]["age"], min_value=1, max_value=120)
     sex = st.selectbox(texts[st.session_state.lang]["sex"], [texts[st.session_state.lang]["female"], texts[st.session_state.lang]["male"]])
-    cp = st.selectbox(texts[st.session_state.lang]["cp"], ['Typical Angina', 'Atypical Angina', 'Non-Anginal Pain', 'Asymptomatic'])
+    cp = st.selectbox(texts[st.session_state.lang]["cp"], texts[st.session_state.lang]["cp_options"])
     trestbps = st.number_input(texts[st.session_state.lang]["trestbps"], min_value=80, max_value=200)
     fbs = st.selectbox(texts[st.session_state.lang]["fbs"], [texts[st.session_state.lang]["no"], texts[st.session_state.lang]["yes"]])
     thalach = st.number_input(texts[st.session_state.lang]["thalach"], min_value=60, max_value=220)
 
 with col2:
     chol = st.number_input(texts[st.session_state.lang]["chol"], min_value=100, max_value=400)
-    restecg = st.selectbox(texts[st.session_state.lang]["restecg"], ['Normal', 'Having ST-T Wave Abnormality', 'Showing Probable or Definite Left Ventricular Hypertrophy'])
+    restecg = st.selectbox(texts[st.session_state.lang]["restecg"], texts[st.session_state.lang]["restecg_options"])
     exang = st.selectbox(texts[st.session_state.lang]["exang"], [texts[st.session_state.lang]["no"], texts[st.session_state.lang]["yes"]])
     oldpeak = st.number_input(texts[st.session_state.lang]["oldpeak"])
-    slope = st.selectbox(texts[st.session_state.lang]["slope"], ['Upsloping', 'Flat', 'Downsloping'])
+    slope = st.selectbox(texts[st.session_state.lang]["slope"], texts[st.session_state.lang]["slope_options"])
     ca = st.selectbox(texts[st.session_state.lang]["ca"], [0, 1, 2, 3, 4])
-    thal = st.selectbox(texts[st.session_state.lang]["thal"], ['Normal', 'Fixed Defect', 'Reversible Defect'])
+    thal = st.selectbox(texts[st.session_state.lang]["thal"], texts[st.session_state.lang]["thal_options"])
 
 # Map text inputs to numerical values for the model
 sex = 1 if sex == texts[st.session_state.lang]["male"] else 0
-cp = ['Typical Angina', 'Atypical Angina', 'Non-Anginal Pain', 'Asymptomatic'].index(cp)
+cp = texts["en"]["cp_options"].index(cp)  # Use English options for mapping
 fbs = 1 if fbs == texts[st.session_state.lang]["yes"] else 0
-restecg = ['Normal', 'Having ST-T Wave Abnormality', 'Showing Probable or Definite Left Ventricular Hypertrophy'].index(restecg)
+restecg = texts["en"]["restecg_options"].index(restecg)  # Use English options for mapping
 exang = 1 if exang == texts[st.session_state.lang]["yes"] else 0
-slope = ['Upsloping', 'Flat', 'Downsloping'].index(slope)
-thal = ['Normal', 'Fixed Defect', 'Reversible Defect'].index(thal)
+slope = texts["en"]["slope_options"].index(slope)  # Use English options for mapping
+thal = texts["en"]["thal_options"].index(thal)  # Use English options for mapping
 
 # Prepare input data for prediction
 input_data = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
