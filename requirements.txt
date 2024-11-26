@@ -4,4 +4,7 @@ pandas
 pickle-mixin
 scikit-learn
 streamlit
+streamlit-webrtc
+opencv-python-headless
+
 
